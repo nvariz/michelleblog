@@ -1,7 +1,3 @@
 == README
 
-* test suite
-
-``
-rspec
-``
+* Coming soon 
