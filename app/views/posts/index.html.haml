@@ -1,8 +1,10 @@
 - if Post.any?
-  = Post.all.each do |p|
+  - Post.all.each do |p|
     %p
       %b= p.title
       %p= p.body
+
+    %hr
 
 - else
   %b No posts to display!
