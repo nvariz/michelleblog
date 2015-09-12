@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index' 
 
-  resources :posts
-  resources :comments, only: :create
+  resources :posts do
+    resources :comments, only: :create
+  end
 end
