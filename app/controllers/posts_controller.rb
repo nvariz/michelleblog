@@ -23,6 +23,13 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def destroy
+    post.comments.destroy_all
+    post.destroy
+
+    redirect_to action: 'index'
+  end
+
   private
 
   def post

@@ -2,7 +2,8 @@
   - Post.all.each do |p|
     %p
       %b= p.title
-      %p= p.body
+    %p= p.body
+    %p= link_to 'View', p
 
     %hr
 
