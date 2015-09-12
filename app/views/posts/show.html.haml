@@ -1,0 +1,20 @@
+%p
+  %b= @post.title
+%p
+  %b= @post.body
+
+%h2 Comments
+- @post.comments.each do |comment|
+  %p
+    %b= "#{comment.name} said: "
+    %br= comment.created_at
+
+  %p= comment.body
+
+= fields_for :comments do |f|
+  %p= f.label :name, 'Author'
+  %p= f.text_field :name
+  %p= f.label :body, 'Comment Description'
+  %p= f.text_area :body
+  %p= f.submit 'Add Comment'
+  

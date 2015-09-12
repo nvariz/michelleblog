@@ -1,0 +1,6 @@
+= form_for Post.new do |f|
+  %p= f.label :title, 'Title'
+  %p= f.text_field :title
+  %p= f.label :body, 'Body'
+  %p= f.text_area :body
+  %p= f.submit 'Create post!'
