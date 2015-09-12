@@ -1,3 +1,7 @@
 == README
 
-* Coming soon 
+## System Dependencies
+
+```
+postgres
+```
