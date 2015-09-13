@@ -11,5 +11,9 @@
       %table
         %tr
           %td= link_to 'Home', posts_path
+          %td= link_to 'New post', new_post_path
+
+    - if flash[:notice]
+      %p(id='notice')= notice
 
     = yield

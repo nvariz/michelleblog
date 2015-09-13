@@ -9,8 +9,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
-    @post.save ? redirect_to(@post) : render('new')
+    save_post
   end
 
   def edit
@@ -18,19 +17,29 @@ class PostsController < ApplicationController
   end
 
   def update
-    post.update!(post_params)
-
-    redirect_to post
+    post.assign_attributes(post_params)
+    save_post
   end
 
   def destroy
     post.comments.destroy_all
     post.destroy
 
+    flash[:notice] = 'Post deleted successfully!'
     redirect_to action: 'index'
   end
 
   private
+
+  def save_post
+    if post.save
+      flash[:notice] = 'Post saved successfully!'
+      redirect_to(post)
+    else
+      flash[:notice] = post.errors.full_messages.join(', ')
+      render('form')
+    end
+  end
 
   def post
     @post ||= Post.find(params[:id])

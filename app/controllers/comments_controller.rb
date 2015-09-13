@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    @comment = post.comments.create!(params.require(:comment).permit(:name, :body))
-
-    redirect_to post
+    @comment = post.comments.new(comment_params)
+    if @comment.save
+      flash[:notice] = 'Comment saved successfully'
+      redirect_to post
+    else
+      flash[:notice] = comment.errors.full_messages.join(',')
+      render 'posts/show'
+    end
   end
 
   def edit
@@ -16,6 +21,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def comment_params
+    params.require(:comment).permit(:name, :body)
+  end
 
   def post
     @post ||= Post.find(params[:post_id])
