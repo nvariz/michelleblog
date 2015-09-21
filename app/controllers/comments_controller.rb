@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :post, only: :edit
+
   def create
     @comment = post.comments.new(comment_params)
     if @comment.save
@@ -6,12 +8,23 @@ class CommentsController < ApplicationController
       redirect_to post
     else
       flash[:notice] = comment.errors.full_messages.join(',')
-      render 'posts/show'
+      redirect_to post
     end
   end
 
   def edit
-    # TODO
+    render partial: 'shared/comments_form', locals: { comment: comment }
+  end
+
+  def update
+    comment.assign_attributes(comment_params)
+    if @comment.save
+      flash[:notice] = 'Comment saved successfully'
+      redirect_to post
+    else
+      flash[:notice] = comment.errors.full_messages.join(',')
+      redirect_to post
+    end
   end
 
   def destroy
