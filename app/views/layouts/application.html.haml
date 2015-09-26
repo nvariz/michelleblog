@@ -11,7 +11,9 @@
       %table
         %tr
           %td= link_to 'Home', posts_path
-          %td= link_to 'New post', new_post_path
+          - if admin_signed_in?
+            %td= link_to 'New post', new_post_path
+            %td= link_to 'Sign out', destroy_admin_session_path, :method => :delete
 
     - if flash[:notice]
       %p(id='notice')= notice

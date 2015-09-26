@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :post, only: [:edit, :show]
 
   def new

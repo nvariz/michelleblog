@@ -2,22 +2,24 @@
   %b= @post.title
 %p= @post.body
 
-%p
-  %table
-    %tr
-      %td= link_to 'Edit post', edit_post_path(@post)
-      %td= link_to 'Delete post', post_path(@post), method: :delete
+- if admin_signed_in?
+  %p
+    %table
+      %tr
+        %td= link_to 'Edit post', edit_post_path(@post)
+        %td= link_to 'Delete post', post_path(@post), method: :delete
 
 %h2 Comments
 - @post.comments.each do |comment|
   %p
     %b= "#{comment.name} said: "
   %p= "#{time_ago_in_words comment.created_at} ago"
-  %p
-    %table
-      %tr
-        %td= link_to 'Edit comment',   edit_post_comment_path(@post, comment)
-        %td= link_to 'Delete comment', post_comment_path(@post, comment), method: :delete
+  - if admin_signed_in?
+    %p
+      %table
+        %tr
+          %td= link_to 'Edit comment',   edit_post_comment_path(@post, comment)
+          %td= link_to 'Delete comment', post_comment_path(@post, comment), method: :delete
 
   %p= comment.body
 
