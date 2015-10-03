@@ -2,7 +2,7 @@
   %p= f.label :title, 'Title'
   %p= f.text_field :title
   %p= f.label :body, 'Body'
-  %p= f.text_area :body, :class => "tinymce", :rows => 40, :cols => 40
+  %p= f.text_area :body, :id => 'post_body', :class => "tinymce", :rows => 40, :cols => 40
   %p= f.submit 'Create post!'
 
 = tinymce
