@@ -1,6 +1,6 @@
 %p
   %b= @post.title
-%p= @post.body
+= @post.body.html_safe
 
 - if admin_signed_in?
   %p
