@@ -1,6 +1,9 @@
 = form_for [@post, comment] do |f|
-  %p= f.label :name, 'Author'
-  %p= f.text_field :name
-  %p= f.label :body, 'Comment Description'
-  %p= f.text_area :body
-  %p= f.submit 'Save Comment'
+  .panel.panel-default
+    .panel-heading
+      %p= f.label :name, 'Author'
+      %p= f.text_field :name
+    .panel-body
+      %p= f.label :body, 'Comment Description'
+      %p= f.text_area :body
+      %p= f.submit 'Save Comment'

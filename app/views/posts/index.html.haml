@@ -1,11 +1,14 @@
 - if Post.any?
   - Post.all.each do |p|
+    .panel.panel-default
+      .panel-heading
+        %p
+          %b= p.title
+      .panel-body
+        = p.body.html_safe
+        %hr
+        %p= link_to 'Write Comment', p
     %p
-      %b= p.title
-    = p.body.html_safe
-    %p= link_to 'View', p
-
-    %hr
 
 - else
   %b You haven't yet written any posts :(

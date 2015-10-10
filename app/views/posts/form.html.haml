@@ -1,8 +1,11 @@
 = form_for @post do |f|
-  %p= f.label :title, 'Title'
-  %p= f.text_field :title
-  %p= f.label :body, 'Body'
-  %p= f.text_area :body, :id => 'post_body', :class => "tinymce", :rows => 40, :cols => 40
-  %p= f.submit 'Create post!'
+  .panel.panel-default
+    .panel-heading
+      %p= f.label :title, 'Title'
+      %p= f.text_field :title
+    .panel-body
+      %p= f.label :body, 'Body'
+      %p= f.text_area :body, :id => 'post_body', :class => "tinymce", :rows => 40, :cols => 40
+      %p= f.submit 'Create post!'
 
 = tinymce

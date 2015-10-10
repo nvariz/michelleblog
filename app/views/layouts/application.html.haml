@@ -6,16 +6,36 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    %header
-      %table
-        %tr
-          %td= link_to 'Home', posts_path
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header   
+          %a.navbar-brand Adventures in Life and Running
+          %p.navbar-text= link_to 'blog', posts_path
           - if admin_signed_in?
-            %td= link_to 'New post', new_post_path
-            %td= link_to 'Sign out', destroy_admin_session_path, :method => :delete
+            %p.navbar-text= link_to 'new post', new_post_path
+            %p.navbar-text= link_to 'sign out', destroy_admin_session_path, :method => :delete
 
+  %body
     - if flash[:notice]
       %p(id='notice')= notice
 
     = yield
+
+  %nav.navbar.navbar-default.navbar-fixed-bottom
+    .container.pull-left
+      %p.navbar-text
+        .social
+          %ul
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-lg.fa-facebook
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-lg.fa-twitter
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-lg.fa-instagram
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-lg.fa-pinterest
